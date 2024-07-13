@@ -1,16 +1,36 @@
 version: 1
-backend:
+frontend:
   phases:
     preBuild:
       commands:
+        - cd frontend
         - npm install
     build:
       commands:
         - npm run build
+  artifacts:
+    baseDirectory: /frontend/build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - frontend/node_modules/**/*
+backend:
+  phases:
+    preBuild:
+      commands:
+        - cd backend
+        - npm install
+    build:
+      commands:
+        - npm run build # 必要に応じて実行
+    postBuild:
+      commands:
+        - npm start # サーバーを起動するコマンドを追加
   artifacts:
     baseDirectory: /
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - backend/node_modules/**/*
