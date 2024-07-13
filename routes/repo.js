@@ -16,7 +16,7 @@ router.use(cors());
 // });
 
 router.get('/repos', async (req, res) => {
-  const repoURL = process.env.URL;
+  const repoURL = 'https://api.github.com/search/repositories?q=user:eobcre+sort:author-date-asc';
 
   try {
     const response = await fetch(repoURL);
@@ -30,4 +30,3 @@ router.get('/repos', async (req, res) => {
 });
 
 module.exports = router;
-
