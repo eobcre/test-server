@@ -8,7 +8,7 @@ const emailRouter = require('./routes/email');
 
 dotenv.config();
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({ origin: 'https://main.d2rold8y41bgnw.amplifyapp.com' }));
 // app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', repoRouter);
